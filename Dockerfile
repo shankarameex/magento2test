@@ -25,4 +25,4 @@ RUN systemctl enable httpd.service
 #Magento Project Installation
 RUN cd /var/www/
 
-RUN git clone git@github.com:paimpozhil/docker-magento.git
+RUN git clone git clone https://shankarameex:shankar@#$%1@github.com/username/repository.git
