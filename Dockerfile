@@ -13,7 +13,7 @@ ADD default.conf /etc/nginx/conf.d/default.conf
 
 RUN chkconfig php-fpm on
 
-RUN chkconfig nginx on
+#RUN chkconfig nginx on
 
 docker run --name mariadbcontainer -e MYSQL_ROOT_PASSWORD=ameexusa -d mariadb:10.1
 
