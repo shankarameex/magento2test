@@ -5,7 +5,7 @@ RUN yum -y install wget
 
 RUN yum -y install git
 
-RUN yum -y install which openssh-server php-mysql php-gd php-mcrypt php-zip php-xml php-iconv php-curl php-soap php-simplexml php-pdo php-dom php-cli php-fpm nginx
+RUN yum -y install which openssh-server php-mysql php-gd php-mcrypt php-zip php-xml php-iconv php-curl php-soap php-simplexml php-pdo php-dom php-cli php-fpm  httpd
 
 RUN yum -y install mariadb-server
 
@@ -17,9 +17,10 @@ RUN chkconfig php-fpm on
 
 RUN systemctl enable mariadb
 
-RUN systemctl start mariadb
+#RUN systemctl start mariadb
 
-#docker run --name mariadbcontainer -e MYSQL_ROOT_PASSWORD=ameexusa -d mariadb:10.1
+RUN systemctl start httpd.service
+RUN systemctl enable httpd.service
 
 #Magento Project Installation
 RUN cd /var/www/
