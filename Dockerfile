@@ -5,6 +5,8 @@ RUN yum -y install wget
 
 RUN yum -y install git
 
+RUN yum install zip
+
 RUN yum -y install which openssh-server php-mysql php-gd php-mcrypt php-zip php-xml php-iconv php-curl php-soap php-simplexml php-pdo php-dom php-cli php-fpm httpd
 
 RUN yum -y install mariadb-server
@@ -25,4 +27,6 @@ RUN systemctl enable httpd.service
 #Magento Project Installation
 RUN cd /var/www/
 
-RUN git clone git clone https://shankarameex:shankar@#$%1@github.com/shankarameex/magento2test.git
+RUN wget http://dev56.ameexopensrc.com/internal/internal.zip
+RUN unzip internal.zip
+RUN rm -rf internal.zip
