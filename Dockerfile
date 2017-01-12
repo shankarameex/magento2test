@@ -19,7 +19,7 @@ RUN systemctl enable mariadb
 
 #RUN systemctl start mariadb
 
-RUN systemctl start httpd.service
+#RUN systemctl start httpd.service
 RUN systemctl enable httpd.service
 
 #Magento Project Installation
