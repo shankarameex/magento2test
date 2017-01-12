@@ -1,0 +1,18 @@
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+	<body>
+
+		<referenceBlock name="customer_account_navigation">
+			<move element="customer-account-navigation-ccsave" destination="customer_account_navigation"
+				after="customer-account-navigation-wish-list-link" />
+			<block class="Magento\Framework\View\Element\Html\Link\Current"
+				name="customer-account-navigation-ccsave">
+				<arguments>
+					<argument name="path" xsi:type="string">authcim/savedcc/index</argument>
+					<argument name="label" xsi:type="string"> Authorize.net Saved
+						Credit Card</argument>
+				</arguments>
+			</block>
+		</referenceBlock>
+	</body>
+</page>

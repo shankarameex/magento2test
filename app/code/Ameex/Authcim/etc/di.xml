@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<!-- /** */ -->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+    <virtualType name="new_column_payment" type="Magento\Sales\Model\ResourceModel\Payment">
+        <arguments>
+            <argument name="columns" xsi:type="array">
+                <item name="auth_code" xsi:type="string">sales_order_payment.auth_code</item>
+            </argument>
+        </arguments>
+    </virtualType>
+	<!--  <preference for="Magento\Authorizenet\Model\Directpost"
+		type="Ameex\Authcim\Model\Rewrite\Directpost" /> -->
+
+</config>

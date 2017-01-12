@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+xsi:noNamespaceSchemaLocation="../../../Backend/etc/menu.xsd">
+    <menu>
+        <add id="Ameex_AdminLogger::main_menu" title="Ameex Admin Logger" 
+            module="Ameex_AdminLogger" sortOrder="20" 
+            resource="Ameex_AdminLogger::adminlogger" />
+        <add id="Ameex_AdminLogger::manage_logs" title="Manage Logs" 
+            module="Ameex_AdminLogger" sortOrder="2" parent="Ameex_AdminLogger::main_menu" action="adminlogger/logs/index" resource="Ameex_AdminLogger::manage_logs" />
+        <add id="Ameex_AdminLogger::configuration" title="AdminLogger Configurations" 
+            module="Ameex_AdminLogger" sortOrder="3" parent="Ameex_AdminLogger::main_menu" action="adminhtml/system_config/edit/section/adminlogger" 
+            resource="Ameex_AdminLogger::configuration" />
+    </menu>
+</config>

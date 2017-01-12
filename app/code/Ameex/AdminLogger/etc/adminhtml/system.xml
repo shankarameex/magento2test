@@ -1,0 +1,33 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Config:etc/system_file.xsd">
+	<system>
+		<tab id="adminlogger" translate="label" sortOrder="10">
+            <label>Admin Logger</label>
+        </tab>
+		<section id="adminlogger" translate="label" type="text" sortOrder="170" showInDefault="1" showInWebsite="1" showInStore="1">
+			<label>Adminlogger Configuration</label>
+			<tab>adminlogger</tab>
+			<resource>Ameex_AdminLogger::adminlogger_config</resource>
+			<group id="adminlogger_general_config" translate="label" type="text" sortOrder="1" showInDefault="1" showInWebsite="1" showInStore="1">
+				<label>General Configuration</label>
+				<field id="adminlogger_enabled" translate="label" type="select" sortOrder="100" showInDefault="1" showInWebsite="1" showInStore="1">
+					<label>Enabled admin logger?</label>
+					<source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+				</field>
+				<field id="adminlogger_allowed_actions" translate="label" type="text" sortOrder="200" showInDefault="1" showInWebsite="1" showInStore="1">
+					<label>Denied actions to log</label>
+					<depends>
+						<field id="adminlogger_enabled">1</field>
+					</depends>
+				</field>
+				<field id="adminlogger_cron_days_settings" translate="label" type="text" sortOrder="300" showInDefault="1" showInWebsite="1" showInStore="1">
+					<label>Delete logs after X days </label>
+					<depends>
+						<field id="adminlogger_enabled">1</field>
+					</depends>
+					<comment>You can specify the number of days you want to maintain the logs.</comment>
+				</field>
+			</group>
+		</section>
+	</system>
+</config>

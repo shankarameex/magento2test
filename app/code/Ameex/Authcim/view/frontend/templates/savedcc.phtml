@@ -1,0 +1,139 @@
+<?php
+/**
+ Copyright Ameex/Commercebees
+ */
+$block = $block->getLayout()->createBlock('Magento\Payment\Block\Transparent\Form');
+$objectManager = \Magento\Framework\App\ObjectManager::getInstance();
+$model = $objectManager->create('Magento\Payment\Model\CcConfig');
+$cctype = $model->getCcAvailableTypes();
+$ccmonth = $model->getCcMonths();
+$ccyears = $model->getCcYears();
+$saved_cc_model = $objectManager->create('Ameex\Authcim\Model\Profdata');
+$savedcc_collection = $saved_cc_model->getSavedCardCollection();
+$cctypes=$saved_cc_model->getAllowedcards();
+//echo $savedcc_collection->getSize();
+?>
+<?php if($savedcc_collection->getSize()>0) {?>
+<table class="data table" id="cc-dispaly-table">
+	<thead>
+		<tr>
+			<th>Credit Card</th>
+			<th>Credit Card Type</th>
+			<th>Action</th>
+		</tr>
+	</thead>
+	<tbody>
+		<?php foreach($savedcc_collection as $data){?>
+			<tr>
+			<td><?php echo $data->getCcnum();?></td>
+			<?php if($data->getCctype()=='VI') {?>
+			<td><?php echo 'Visa';?></td>
+			<?php }?>
+			<?php if($data->getCctype()=='AE') {?>
+			<td><?php echo 'American Express';?></td>
+			<?php }?>		
+			<?php if($data->getCctype()=='MC') {?>
+			<td><?php echo 'MasterCard';?></td>
+			<?php }?>			
+			<?php if($data->getCctype()=='DI') {?>
+			<td><?php echo 'Discover';?></td>
+			<?php }?>	
+			<?php if($data->getCctype()=='OT') {?>
+			<td><?php echo 'Other';?></td>
+			<?php }?>								
+			<td><a
+				href="<?php echo $block->getUrl('authcim/savedcc/savecc').'?action=delete&id='.$data['id'].'&profid='.$data['profid']; ?>"
+				title="delete">Delete</a>/
+		<?php if($data->getIsPrimary()=='1'){?>
+			<span>Primary card</span>
+		<?php } else {?>					
+				<a
+				href="<?php echo $block->getUrl('authcim/savedcc/savecc').'?action=makeprimary&id='.$data['id']; ?>"
+				title="Make primary">Make Primary card</a>
+			<?php }?>
+		
+		
+		</tr>
+		<?php }?>
+	</tbody>
+</table>
+<?php }?>
+<div class="page-title-wrapper">
+	<h1 class="page-title">
+		<span class="base">Save New Credit Card</span>
+	</h1>
+</div>
+<form class="form saveccform"
+	action="
+    <?php echo $block->getUrl('authcim/savedcc/savecc'); ?>">
+	<fieldset class="fieldset">
+		<div class="field">
+			<label for="cctype">Select Credit Card type</label> <select
+				id="cctype" name='cctype' class="cctype" style="width: 25%">
+				<option value="-1">--Please Select--</option>
+			<?php foreach($cctypes as $val){?>
+				<?php if($val=='VI') {?>
+				<option value="<?php echo $val?>"><?php echo 'Visa'?></option>
+				<?php } ?>
+				<?php if($val=='AE') {?>
+				<option value="<?php echo $val?>"><?php echo 'American Express'?></option>
+				<?php } ?>
+
+				<?php if($val=='MC') {?>
+				<option value="<?php echo $val?>"><?php echo 'MasterCard'?></option>
+				<?php } ?>
+				<?php if($val=='DI') {?>
+				<option value="<?php echo $val?>"><?php echo 'Discover'?></option>				
+				<?php } if($val=='OT') {?>				
+				<option value="<?php echo $val?>"><?php echo 'Other'?></option>
+				<?php }?>
+
+			<?php }?>
+		</select>
+		</div>
+
+		<div class="field">
+			<label for="ccNumber">Credit Card Number</label>
+			<div class="control">
+				<input type="number" id="ccNumber" name="ccnumber"
+					class="ccnumber input-text required-entry" style="width: 30%" />
+			</div>
+		</div>
+		<div class="field">
+
+			<div class="control">
+				<label for="month">Month</label> <select id="month" class="month"
+					name="ccmonth" style="width: 15%">
+					<option value="-1">--Please Select--</option>
+			<?php foreach($ccmonth as $key=>$val){?>
+			<option value="<?php echo $key?>"><?php echo $val?></option>
+			<?php }?>
+		</select> <label for="year">Year</label> <select id="year"
+					class="year" name="ccyear" style="width: 15%">
+					<option value="-1">--Please Select--</option>
+			<?php foreach($ccyears as $key=>$val){?>
+			<option value="<?php echo $key?>"><?php echo $val?></option>
+			<?php }?>
+		</select>
+			</div>
+		</div>
+		<?php
+/*
+ * if($model->hasVerification()){?>
+ * <div class="field">
+ * <label for="ccNumber">Cvv</label>
+ * <div class="control">
+ * <input type="number" id="cvv" name="ccv" class="ccv input-text required-entry" style="width:10%"/>
+ * </div>
+ * </div>
+ * <?php }
+ */
+?>	
+		<div class="actions-toolbar">
+			<button type="submit" class="action primary save-cc submit"
+				title="Save">
+				<span>Save</span>
+			</button>
+		</div>
+	</fieldset>
+</form>

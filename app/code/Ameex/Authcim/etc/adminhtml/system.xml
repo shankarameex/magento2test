@@ -1,0 +1,71 @@
+<?xml version="1.0"?>
+<!-- /** * Copyright © 2015 Magento. All rights reserved. * See COPYING.txt 
+	for license details. */ -->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:noNamespaceSchemaLocation="../../../Config/etc/system_file.xsd">
+	<system>
+		<section id="payment">
+			<group id="ameex_authcim" translate="label" type="text"
+				sortOrder="50" showInDefault="1" showInWebsite="1" showInStore="1">
+				<label>Authorize.net with CIM</label>
+
+				<field id="active" translate="label" type="select" sortOrder="1"
+					showInDefault="1" showInWebsite="1" showInStore="0">
+					<label>Enabled</label>
+					<source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+				</field>				
+                <field id="payment_action" translate="label" type="select" sortOrder="20" showInDefault="1" showInWebsite="1" showInStore="0" canRestore="1">
+                    <label>Payment Action</label>
+                    <source_model>Magento\Authorizenet\Model\Source\PaymentAction</source_model>
+                </field>				
+				<field id="title" translate="label" type="text" sortOrder="2"
+					showInDefault="1" showInWebsite="1" showInStore="1">
+					<label>Title</label>
+				</field>
+				<field id="api_key" translate="label" type="obscure"
+					sortOrder="3" showInDefault="1" showInWebsite="1" showInStore="0">
+					<label>Api Key</label>
+					<backend_model>Magento\Config\Model\Config\Backend\Encrypted</backend_model>
+				</field>
+				<field id="transactionkey" translate="label" type="obscure"
+					sortOrder="3" showInDefault="1" showInWebsite="1" showInStore="0">
+					<label>TransactionKey
+					</label>
+					<backend_model>Magento\Config\Model\Config\Backend\Encrypted</backend_model>
+				</field>
+				<field id="gatewayurl" translate="label" type="text"
+					sortOrder="2" showInDefault="1" showInWebsite="1" showInStore="1">
+					<label>Gateway Url</label>
+					<comment>Use this url for production:
+						https://api.authorize.net/xml/v1/request.api
+						Use this url for
+						development:
+						https://apitest.authorize.net/xml/v1/request.api
+					</comment>
+
+				</field>
+				<field id="cvv" translate="label" type="select" sortOrder="10"
+					showInDefault="1" showInWebsite="1" showInStore="0">
+					<label>Require CVV</label>
+					<source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+				</field>
+				<field id="cctypes" translate="label" type="multiselect"
+					sortOrder="5" showInDefault="1" showInWebsite="1" showInStore="0">
+					<label>Credit Card Types</label>
+					<source_model>Magento\Authorizenet\Model\Source\Cctype</source_model>
+				</field>
+				<field id="sort_order" translate="label" type="text"
+					sortOrder="100" showInDefault="1" showInWebsite="1" showInStore="0">
+					<label>Sort Order</label>
+				</field>
+				<!-- <field id="allowspecific" translate="label" type="allowspecific" 
+					sortOrder="50" showInDefault="1" showInWebsite="1" showInStore="0"> <label>Payment 
+					from Applicable Countries</label> <source_model>Magento\Payment\Model\Config\Source\Allspecificcountries</source_model> 
+					</field> <field id="specificcountry" translate="label" type="multiselect" 
+					sortOrder="51" showInDefault="1" showInWebsite="1" showInStore="0"> <label>Payment 
+					from Specific Countries</label> <source_model>Magento\Directory\Model\Config\Source\Country</source_model> 
+					</field> -->
+			</group>
+		</section>
+	</system>
+</config>

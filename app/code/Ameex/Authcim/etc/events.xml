@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:Event/etc/events.xsd">
+        <event name="sales_order_place_before">
+        <observer name="saved_cc_flag" instance="Ameex\Authcim\Observer\Setflag" />
+    </event>
+   <!--  <event name="payment_method_assign_data_ameex_authcim">
+        <observer name="ameex_authcim_gateway_data_assign" instance="Ameex\Authcim\Observer\DataAssignObserver" />
+    </event>    --> 
+</config>
