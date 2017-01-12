@@ -1,3 +1,4 @@
+FROM centos:centos7
 MAINTAINER shiva.shankar@ameexusa.com
 # Centos default image for some reason does not have tools like Wget/Tar/etc so lets add them
 RUN yum -y install wget
