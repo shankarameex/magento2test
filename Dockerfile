@@ -15,6 +15,10 @@ RUN chkconfig php-fpm on
 
 #RUN chkconfig nginx on
 
+RUN systemctl enable mariadb
+
+RUN systemctl start mariadb
+
 #docker run --name mariadbcontainer -e MYSQL_ROOT_PASSWORD=ameexusa -d mariadb:10.1
 
 #Magento Project Installation
