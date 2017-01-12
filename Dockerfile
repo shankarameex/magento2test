@@ -5,11 +5,11 @@ RUN yum -y install wget
 
 RUN yum -y install git
 
-RUN yum -y install which openssh-server php-mysql php-gd php-mcrypt php-zip php-xml php-iconv php-curl php-soap php-simplexml php-pdo php-dom php-cli php-fpm  httpd
+RUN yum -y install which openssh-server php-mysql php-gd php-mcrypt php-zip php-xml php-iconv php-curl php-soap php-simplexml php-pdo php-dom php-cli php-fpm httpd
 
 RUN yum -y install mariadb-server
 
-ADD default.conf /etc/nginx/conf.d/default.conf
+#ADD default.conf /etc/nginx/conf.d/default.conf
 
 RUN chkconfig php-fpm on
 
