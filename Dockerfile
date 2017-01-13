@@ -18,15 +18,15 @@ RUN chkconfig php-fpm on
 #RUN chkconfig nginx on
 
 RUN systemctl enable mariadb
-
+RUN mysql -u root -p
 #RUN systemctl start mariadb
 
 #RUN systemctl start httpd.service
 RUN systemctl enable httpd.service
 
 #Magento Project Installation
-RUN cd /var/www/
-
-RUN wget http://dev56.ameexopensrc.com/internal/internal.zip
-RUN unzip internal.zip ./
-RUN rm -rf internal.zip
+#RUN cd /var/www/
+#RUN wget http://dev56.ameexopensrc.com/internal/internal.tar.gz
+#RUN tar -zxvf internal.tar.gz
+#RUN rm -rf internal.tar.gz
+#RUN mysql 
