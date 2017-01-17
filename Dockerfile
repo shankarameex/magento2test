@@ -11,7 +11,7 @@ RUN yum -y install which openssh-server php-mysql php-gd php-mcrypt php-zip php-
 
 RUN yum -y install mariadb-server
 
-RUN yum install mysql-server
+
 
 RUN systemctl start mysqld
 
