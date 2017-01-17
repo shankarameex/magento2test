@@ -11,9 +11,9 @@ RUN yum -y install which openssh-server php-mysql php-gd php-mcrypt php-zip php-
 
 RUN yum -y install mariadb-server
 
-sudo yum install mysql-server
+RUN yum install mysql-server
 
-sudo systemctl start mysqld
+RUN systemctl start mysqld
 
 #ADD default.conf /etc/nginx/conf.d/default.conf
 
